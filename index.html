@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>इराळे वसती गणेश मंडळ – हिशोब</title>
+<style>
+:root{--bg:#fff8ee;--card:#fff;--ink:#2b1d0e;--mut:#8a7560;--sf:#ff7a00;--g:#1b9a4b;--r:#d6362f;--b:#7a3e00;--line:#f1e2cc}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Noto Sans Devanagari","Mangal",sans-serif;background:var(--bg);color:var(--ink)}
+header{background:linear-gradient(135deg,#ff6a00,#ffb347);color:#fff;padding:22px 16px 60px;text-align:center}
+header h1{margin:4px 0 2px;font-size:clamp(20px,5vw,32px)}
+header p{margin:0;opacity:.95;font-size:14px}
+.wrap{max-width:900px;margin:-44px auto 40px;padding:0 12px}
+.bar{display:flex;gap:8px;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+select,input,button{font:inherit}
+select{padding:9px 12px;border-radius:10px;border:0;background:#fff;box-shadow:0 2px 8px #0002;font-weight:700;color:var(--b)}
+.btn{border:0;border-radius:10px;padding:9px 14px;cursor:pointer;font-weight:700;background:#fff;color:var(--b);box-shadow:0 2px 8px #0002}
+.btn:disabled{opacity:.5}
+.btn.p{background:var(--sf);color:#fff}.btn.d{background:#fdecea;color:var(--r);box-shadow:none;padding:5px 9px}.btn.e{background:#eef4ff;color:#2856c7;box-shadow:none;padding:5px 9px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.c{background:var(--card);border-radius:16px;padding:14px;box-shadow:0 4px 14px #7a3e0018;border-top:5px solid var(--sf)}
+.c small{color:var(--mut);font-weight:600}.c b{display:block;font-size:clamp(17px,4.6vw,28px);margin-top:4px}
+.c.j{border-color:var(--g)}.c.j b{color:var(--g)}.c.k{border-color:var(--r)}.c.k b{color:var(--r)}.c.s b{color:var(--b)}
+.prog{height:10px;background:#f6e3c8;border-radius:9px;overflow:hidden;margin:14px 2px 4px}
+.prog i{display:block;height:100%;background:linear-gradient(90deg,var(--sf),var(--r));width:0;transition:width .6s}
+.pl{font-size:12px;color:var(--mut);margin:0 2px 14px}
+.tabs{display:flex;gap:6px;margin:6px 0 10px}
+.tab{flex:1;padding:11px;border:0;border-radius:12px;background:#f7e6cd;font-weight:700;color:var(--b);cursor:pointer}
+.tab.on{background:var(--sf);color:#fff}
+.panel{background:var(--card);border-radius:16px;padding:8px 12px;box-shadow:0 4px 14px #7a3e0018;min-height:80px}
+.row{display:flex;align-items:center;gap:8px;padding:11px 2px;border-bottom:1px dashed var(--line)}
+.row:last-child{border:0}
+.n{width:26px;height:26px;border-radius:50%;background:#fff1de;color:var(--b);font-size:12px;font-weight:700;display:grid;place-items:center;flex:none}
+.m{flex:1;min-width:0}.m div{font-weight:600;word-break:break-word}.m small{color:var(--mut)}
+.a{font-weight:800;white-space:nowrap}.a.g{color:var(--g)}.a.r{color:var(--r)}
+.tot{display:flex;justify-content:space-between;padding:12px 2px;font-weight:800;border-top:2px solid var(--sf);margin-top:4px}
+.empty{text-align:center;color:var(--mut);padding:26px 0}
+.search{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;margin:6px 0}
+.adm{background:#fff;border:2px dashed var(--sf);border-radius:16px;padding:14px;margin-bottom:14px}
+.adm h3{margin:0 0 8px;color:var(--b)}
+.f{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.f input{padding:10px;border:1px solid #e6cfa9;border-radius:10px;width:100%}
+.f .w{grid-column:1/-1}
+dialog{border:0;border-radius:16px;padding:20px;box-shadow:0 10px 40px #0005;max-width:360px;width:90%}
+dialog input{width:100%;padding:10px;border:1px solid #e6cfa9;border-radius:10px;margin:10px 0}
+#toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%) translateY(80px);background:#2b1d0e;color:#fff;padding:10px 18px;border-radius:24px;font-weight:600;transition:.3s;z-index:9;max-width:90%;text-align:center}
+#toast.on{transform:translateX(-50%) translateY(0)}
+#toast.err{background:var(--r)}
+.note{background:#fff3cd;border:1px solid #ffe08a;border-radius:12px;padding:10px 12px;margin-bottom:12px;font-size:14px}
+footer{text-align:center;color:var(--mut);font-size:12px;padding-bottom:24px}
+@media(max-width:520px){.cards{gap:6px}.c{padding:10px}}
+</style>
+</head>
+<body>
+<header>
+  <div style="font-size:34px">🙏 🌺 🙏</div>
+  <h1>इराळे वसती गणेश मंडळ</h1>
+  <p>पारदर्शक हिशोब – जमा व खर्च</p>
+</header>
+<div class="wrap">
+  <div class="bar">
+    <select id="year"></select>
+    <div><button class="btn" id="refBtn">🔄</button> <button class="btn" id="loginBtn"></button></div>
+  </div>
+  <div id="note"></div>
+  <div class="cards">
+    <div class="c j"><small>एकूण जमा</small><b id="tj">…</b></div>
+    <div class="c k"><small>एकूण खर्च</small><b id="tk">…</b></div>
+    <div class="c s"><small>शिल्लक</small><b id="ts">…</b></div>
+  </div>
+  <div class="prog"><i id="pb"></i></div>
+  <p class="pl" id="pl"></p>
+  <div id="admin"></div>
+  <div class="tabs">
+    <button class="tab on" data-t="v">💰 वर्गणी (जमा)</button>
+    <button class="tab" data-t="k">🧾 खर्च</button>
+  </div>
+  <div class="panel" id="list"><div class="empty">लोड होत आहे…</div></div>
+</div>
+<footer>जय गणेश 🙏 • सर्व नोंदी सर्वांसाठी खुल्या</footer>
+<div id="toast"></div>
+
+<dialog id="dlg">
+  <b>Admin Login</b>
+  <p style="font-size:13px;color:var(--mut);margin:6px 0 0">GitHub Token टाका (फक्त या फोनमध्ये साठवला जाईल)</p>
+  <input type="password" id="tok" placeholder="github_pat_..." autocomplete="off">
+  <div style="display:flex;gap:8px;justify-content:flex-end">
+    <button class="btn" id="dc">रद्द</button><button class="btn p" id="dok">लॉगिन</button>
+  </div>
+  <div id="dmsg" style="color:var(--r);font-size:13px;margin-top:6px"></div>
+</dialog>
+
+<script>
+/* ===== सेटिंग: GitHub Pages वर (username.github.io/repo) असेल तर काही भरायची गरज नाही ===== */
+const CFG={owner:'',repo:'',file:'data.json'};
+/* ================================================================================ */
+const H=location.hostname,auto=H.endsWith('.github.io')?{o:H.split('.')[0],r:location.pathname.split('/')[1]||H}:{};
+const OWNER=CFG.owner||auto.o,REPO=CFG.repo||auto.r;
+const API=`https://api.github.com/repos/${OWNER}/${REPO}/contents/${CFG.file}`;
+const $=s=>document.querySelector(s);
+let D={vargani:[],kharch:[]},tab='v',q='',busy=false,loaded=false,tok=localStorage.getItem('gh_tok')||'';
+const cy=Math.max(new Date().getFullYear(),2026);let Y=cy;
+const fmt=n=>'₹'+Number(n).toLocaleString('en-IN');
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+const dstr=d=>{if(!d)return'';const[y,m,dd]=d.split('-');return`${dd}-${m}-${y}`};
+const todayIn=()=>{const t=new Date().toISOString().slice(0,10);return t.slice(0,4)==Y?t:Y+'-01-01'};
+const enc=s=>btoa(unescape(encodeURIComponent(s)));
+const dec=s=>decodeURIComponent(escape(atob(s)));
+const hdr=(raw)=>{const h={Accept:raw?'application/vnd.github.raw+json':'application/vnd.github+json'};if(tok)h.Authorization='Bearer '+tok;return h};
+let tt;function toast(m,err){const t=$('#toast');t.textContent=m;t.className='on'+(err?' err':'');clearTimeout(tt);tt=setTimeout(()=>t.className='',err?4500:2200)}
+
+async function load(){
+  if(!OWNER||!REPO){$('#note').innerHTML='<div class="note">⚠️ फाईलच्या वरती CFG मध्ये GitHub owner आणि repo नाव भरा.</div>';loaded=true;render();return}
+  let d=null;
+  try{const r=await fetch(API+'?t='+Date.now(),{headers:hdr(true),cache:'no-store'});if(r.ok)d=await r.json()}catch(e){}
+  if(!d){try{const r=await fetch(CFG.file+'?t='+Date.now(),{cache:'no-store'});if(r.ok)d=await r.json()}catch(e){}}
+  if(d){D={vargani:d.vargani||[],kharch:d.kharch||[]}}
+  loaded=true;render();
+}
+/* थेट GitHub repo मध्ये commit: नेहमी ताजा data घेऊन त्यावर बदल लावतो (दोन admin असले तरी नोंदी हरवत नाहीत) */
+async function commit(fn,msg){
+  if(busy)return;busy=true;render();toast('⏳ सेव होत आहे…');
+  try{
+    for(let i=0;i<3;i++){
+      let sha,cur={vargani:[],kharch:[]};
+      const r=await fetch(API+'?t='+Date.now(),{headers:hdr(false),cache:'no-store'});
+      if(r.ok){const j=await r.json();sha=j.sha;cur=JSON.parse(dec(j.content));cur.vargani=cur.vargani||[];cur.kharch=cur.kharch||[]}
+      else if(r.status===401){logout(true);throw new Error('Token चुकीचा/संपला आहे. पुन्हा लॉगिन करा.')}
+      else if(r.status!==404)throw new Error('वाचता आले नाही ('+r.status+')');
+      fn(cur);
+      const body={message:msg,content:enc(JSON.stringify(cur,null,1))};if(sha)body.sha=sha;
+      const p=await fetch(API,{method:'PUT',headers:{...hdr(false),'Content-Type':'application/json'},body:JSON.stringify(body)});
+      if(p.ok){D=cur;toast('✅ सेव झाले');return true}
+      if(p.status===401||p.status===403||p.status===404)throw new Error('सेव करण्याची परवानगी नाही. Token मध्ये Contents: Read and write द्या.');
+      /* 409/422 = कोणीतरी मध्येच बदल केला → पुन्हा प्रयत्न */
+    }
+    throw new Error('सेव झाले नाही, पुन्हा प्रयत्न करा');
+  }catch(e){toast('❌ '+e.message,true);await load();return false}
+  finally{busy=false;render()}
+}
+
+function years(){
+  const mx=Math.max(cy,...D.vargani.map(x=>+x.y),...D.kharch.map(x=>+x.date.slice(0,4)));
+  const r=[];for(let y=2026;y<=mx;y++)r.push(y);return r;
+}
+function render(){
+  $('#year').innerHTML=years().map(y=>`<option ${y==Y?'selected':''}>${y}</option>`).join('');
+  const vs=D.vargani.filter(x=>x.y==Y).reverse();
+  const ks=D.kharch.filter(x=>x.date.slice(0,4)==Y).sort((a,b)=>b.date.localeCompare(a.date));
+  const tj=vs.reduce((s,x)=>s+x.amt,0),tk=ks.reduce((s,x)=>s+x.amt,0);
+  $('#tj').textContent=fmt(tj);$('#tk').textContent=fmt(tk);$('#ts').textContent=fmt(tj-tk);
+  const pc=tj?Math.min(100,Math.round(tk/tj*100)):0;$('#pb').style.width=pc+'%';
+  $('#pl').textContent=tj?`जमा रकमेपैकी ${pc}% खर्च झाले`:(loaded?'अजून नोंदी नाहीत':'');
+  $('#loginBtn').textContent=tok?'🚪 Logout':'🔐 Admin';
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.dataset.t==tab));
+  const keep=document.activeElement&&document.activeElement.closest('#admin');
+  if(!keep||!$('#admin').innerHTML)$('#admin').innerHTML=tok?adminHtml():'';
+  document.querySelectorAll('#admin .btn.p').forEach(b=>b.disabled=busy);
+  const A=!!tok;let h='';
+  if(tab==='v'){
+    const f=vs.filter(x=>x.name.toLowerCase().includes(q.toLowerCase()));
+    h=`<input class="search" id="q" placeholder="🔍 नावाने शोधा" value="${esc(q)}">`;
+    h+=f.length?f.map((x,i)=>`<div class="row"><div class="n">${f.length-i}</div><div class="m"><div>${esc(x.name)}</div>${x.date?`<small>${dstr(x.date)}</small>`:''}</div><div class="a g">${fmt(x.amt)}</div>${A?ctl('v',x.id):''}</div>`).join('')+`<div class="tot"><span>एकूण (${f.length} जण)</span><span>${fmt(f.reduce((s,x)=>s+x.amt,0))}</span></div>`:`<div class="empty">${loaded?'वर्गणी नोंदी नाहीत':'लोड होत आहे…'}</div>`;
+  }else{
+    h=ks.length?ks.map(x=>`<div class="row"><div class="n">🧾</div><div class="m"><div>${esc(x.desc)}</div><small>${dstr(x.date)}</small></div><div class="a r">${fmt(x.amt)}</div>${A?ctl('k',x.id):''}</div>`).join('')+`<div class="tot"><span>एकूण खर्च</span><span>${fmt(tk)}</span></div>`:`<div class="empty">${loaded?'खर्च नोंदी नाहीत':'लोड होत आहे…'}</div>`;
+  }
+  $('#list').innerHTML=h;
+  const qi=$('#q');if(qi)qi.oninput=e=>{q=e.target.value;const p=e.target.selectionStart;render();const n=$('#q');n.focus();n.setSelectionRange(p,p)};
+}
+const ctl=(t,id)=>`<button class="btn e" onclick="edit('${t}','${id}')">✏️</button><button class="btn d" onclick="del('${t}','${id}')">🗑</button>`;
+function adminHtml(){
+  return `<div class="adm"><h3>➕ वर्गणी जोडा</h3><input type="hidden" id="vId">
+  <div class="f"><input id="vName" class="w" placeholder="नाव"><input id="vAmt" type="number" inputmode="numeric" placeholder="रक्कम ₹"><input id="vDate" type="date" value="${todayIn()}"></div>
+  <button class="btn p" onclick="saveV()">💾 वर्गणी सेव करा</button></div>
+  <div class="adm"><h3>➕ खर्च जोडा</h3><input type="hidden" id="kId">
+  <div class="f"><input id="kDesc" class="w" placeholder="कशासाठी खर्च (उदा. मूर्ती, मंडप, आरती साहित्य)"><input id="kAmt" type="number" inputmode="numeric" placeholder="रक्कम ₹"><input id="kDate" type="date" value="${todayIn()}"></div>
+  <button class="btn p" onclick="saveK()">💾 खर्च सेव करा</button></div>`;
+}
+async function saveV(){
+  const name=$('#vName').value.trim(),amt=+$('#vAmt').value,date=$('#vDate').value,id=$('#vId').value,y=+Y;
+  if(!name||!(amt>0))return toast('नाव आणि रक्कम भरा',true);
+  const ok=await commit(c=>{if(id){const x=c.vargani.find(v=>v.id===id);if(x)Object.assign(x,{name,amt,date})}else c.vargani.push({id:uid(),y,name,amt,date})},'वर्गणी: '+name);
+  if(ok)$('#admin').innerHTML=adminHtml();
+}
+async function saveK(){
+  const desc=$('#kDesc').value.trim(),amt=+$('#kAmt').value,date=$('#kDate').value,id=$('#kId').value;
+  if(!desc||!(amt>0)||!date)return toast('तपशील, रक्कम आणि तारीख भरा',true);
+  const ok=await commit(c=>{if(id){const x=c.kharch.find(v=>v.id===id);if(x)Object.assign(x,{desc,amt,date})}else c.kharch.push({id:uid(),desc,amt,date})},'खर्च: '+desc);
+  if(ok){Y=date.slice(0,4);$('#admin').innerHTML=adminHtml();render()}
+}
+function edit(t,id){
+  if(t==='v'){const x=D.vargani.find(v=>v.id===id);$('#vId').value=id;$('#vName').value=x.name;$('#vAmt').value=x.amt;$('#vDate').value=x.date||''}
+  else{const x=D.kharch.find(v=>v.id===id);$('#kId').value=id;$('#kDesc').value=x.desc;$('#kAmt').value=x.amt;$('#kDate').value=x.date}
+  $('#admin').scrollIntoView({behavior:'smooth'});
+}
+function del(t,id){
+  if(!confirm('ही नोंद हटवायची?'))return;
+  commit(c=>{if(t==='v')c.vargani=c.vargani.filter(v=>v.id!==id);else c.kharch=c.kharch.filter(v=>v.id!==id)},'नोंद हटवली');
+}
+function logout(silent){tok='';localStorage.removeItem('gh_tok');$('#admin').innerHTML='';if(!silent)toast('Logout झाले');render()}
+$('#year').onchange=e=>{Y=e.target.value;render()};
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{tab=t.dataset.t;render()});
+$('#refBtn').onclick=async()=>{await load();toast('अपडेट झाले')};
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!busy&&loaded)load()});
+$('#loginBtn').onclick=()=>{if(tok)return logout();$('#tok').value='';$('#dmsg').textContent='';$('#dlg').showModal()};
+$('#dc').onclick=()=>$('#dlg').close();
+$('#dok').onclick=async()=>{
+  const t=$('#tok').value.trim();if(!t)return;$('#dmsg').textContent='तपासत आहे…';
+  try{
+    const r=await fetch(`https://api.github.com/repos/${OWNER}/${REPO}`,{headers:{Authorization:'Bearer '+t,Accept:'application/vnd.github+json'}});
+    if(!r.ok)throw 0;const j=await r.json();
+    if(!(j.permissions&&j.permissions.push))return $('#dmsg').textContent='या token ला repo मध्ये लिहिण्याची परवानगी नाही (Contents: Read and write).';
+    tok=t;localStorage.setItem('gh_tok',t);$('#dlg').close();$('#admin').innerHTML='';await load();toast('✅ Admin लॉगिन झाले');
+  }catch(e){$('#dmsg').textContent='Token चुकीचा आहे किंवा या repo साठी नाही.'}
+};
+load();
+</script>
+</body>
+</html>
